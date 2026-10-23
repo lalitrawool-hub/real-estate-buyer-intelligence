@@ -1,0 +1,15 @@
+# Virtual environments and Python-generated files
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.streamlit/secrets.toml
+
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+
+# Source datasets can contain private buyer information
+clients.csv
+properties.csv
