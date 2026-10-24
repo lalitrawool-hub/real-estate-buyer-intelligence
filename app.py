@@ -11,13 +11,15 @@ st.set_page_config(page_title="Parcl | Buyer Intelligence", page_icon="◆", lay
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{--navy:#13283f;--blue:#8eb4cf;--blue-dark:#527f9f;--warm:#faf9f6;--gold:#d8ba70;--beige:#eee9df;--ink:#213349;--muted:#788696}
-.stApp{background:var(--warm);color:var(--ink);font-family:'DM Sans',sans-serif}.block-container{padding:2.2rem 3.5rem 3rem;max-width:1580px}
-h1,h2,h3{font-family:'Manrope',sans-serif;color:var(--navy);letter-spacing:-.035em}.hero{padding:1rem 0 1.6rem}.eyebrow{color:#a0874e;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700}.hero p{color:var(--muted);font-size:1.02rem;margin:.35rem 0 0}
-[data-testid="stMetric"]{background:white;border:1px solid #ece8e0;border-radius:18px;padding:1rem 1.2rem;box-shadow:0 5px 18px rgba(19,40,63,.045)}[data-testid="stMetricLabel"]{color:#788696}[data-testid="stMetricValue"]{color:#13283f;font-family:Manrope}
-[data-testid="stSidebar"]{background:#f1eee7;border-right:1px solid #e8e2d7}[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2{color:var(--navy)}
-.section-note{color:#788696;font-size:.91rem}.stTabs [data-baseweb="tab-list"]{gap:1.2rem;border-bottom:1px solid #e8e4dc}.stTabs [data-baseweb="tab"]{color:#657587;padding:0 0 .8rem}.stTabs [aria-selected="true"]{color:#13283f}
-div[data-testid="stPlotlyChart"]{background:white;border:1px solid #ece8e0;border-radius:18px;padding:.5rem;box-shadow:0 5px 18px rgba(19,40,63,.035)}
+:root{--navy:#172B3F;--secondary:#475569;--blue:#8FB5CC;--blue-dark:#527f9f;--warm:#FAF9F6;--gold:#D8B65C;--beige:#F1EDE5;--ink:#172B3F;--muted:#475569;--card:#FFFFFF}
+.stApp,[data-testid="stAppViewContainer"]{background:var(--warm);color:var(--ink);font-family:'DM Sans',sans-serif}.block-container{padding:2.2rem 3.5rem 3rem;max-width:1580px}
+h1,h2,h3{font-family:'Manrope',sans-serif;color:var(--navy);letter-spacing:-.035em}.hero{padding:1rem 0 1.6rem}.eyebrow{color:#80651F;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700}.hero p{color:var(--secondary);font-size:1.02rem;margin:.35rem 0 0}
+[data-testid="stMetric"]{background:var(--card);border:1px solid #e7e2d8;border-radius:18px;padding:1rem 1.2rem;box-shadow:0 5px 18px rgba(23,43,63,.06)}[data-testid="stMetricLabel"],[data-testid="stMetricLabel"] *{color:var(--secondary)!important}[data-testid="stMetricValue"],[data-testid="stMetricValue"] *{color:var(--navy)!important;font-family:'Manrope',sans-serif}
+[data-testid="stSidebar"],[data-testid="stSidebar"] section{background:var(--beige)!important;color:var(--navy)!important;border-right:1px solid #e2dbcf}[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3,[data-testid="stSidebar"] label,[data-testid="stSidebar"] p,[data-testid="stSidebar"] span,[data-testid="stSidebar"] [data-testid="stWidgetLabel"],[data-testid="stSidebar"] [data-testid="stMarkdownContainer"]{color:var(--navy)!important}
+[data-testid="stSidebar"] [data-baseweb="select"],[data-testid="stSidebar"] [data-baseweb="select"] *,[data-testid="stSidebar"] input{color:var(--navy)!important;-webkit-text-fill-color:var(--navy)!important}[data-testid="stSidebar"] [data-baseweb="select"]>div{background:#fff!important}
+[data-baseweb="popover"],[data-baseweb="menu"],[role="listbox"],[role="option"]{background:#fff!important;color:var(--navy)!important}[data-baseweb="popover"] *,[data-baseweb="menu"] *,[role="listbox"] *,[role="option"] *{color:var(--navy)!important}
+.stCaption,[data-testid="stCaptionContainer"],[data-testid="stCaptionContainer"] *{color:var(--secondary)!important}.stTabs [data-baseweb="tab-list"]{gap:1.2rem;border-bottom:1px solid #e8e4dc}.stTabs [data-baseweb="tab"],[data-baseweb="tab"] *{color:var(--secondary)!important;padding:0 0 .8rem}.stTabs [data-baseweb="tab"][aria-selected="true"],[data-baseweb="tab"][aria-selected="true"] *{color:var(--navy)!important}.stTabs [data-baseweb="tab-highlight"]{background-color:var(--gold)!important}
+div[data-testid="stPlotlyChart"]{background:var(--card);border:1px solid #e7e2d8;border-radius:18px;padding:.5rem;box-shadow:0 5px 18px rgba(23,43,63,.045)}
 @media (min-width:769px) and (max-width:1100px){.block-container{padding:2rem 2rem 2.5rem}}
 @media (max-width:768px){.block-container{padding:1.25rem 1rem 2rem}.hero{padding:.4rem 0 1rem}.hero h1{font-size:clamp(1.75rem,7vw,2.45rem);line-height:1.1}.hero p{font-size:.94rem}.stTabs [data-baseweb="tab-list"]{gap:.7rem;overflow-x:auto}.stTabs [data-baseweb="tab"]{font-size:.82rem;white-space:nowrap;padding:0 0 .65rem}[data-testid="stMetric"]{padding:.8rem;border-radius:14px}div[data-testid="stPlotlyChart"]{padding:.25rem;border-radius:14px}}
 </style>
@@ -77,8 +79,16 @@ except (ValueError, TypeError, FloatingPointError) as exc:
     st.error(f"Could not produce segments for the current data and settings: {exc}")
     st.stop()
 
-navy, blue, gold = "#18334f", "#8eb4cf", "#d8ba70"
-plot_layout = dict(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font=dict(family="DM Sans", color="#536477"), margin=dict(l=18,r=18,t=25,b=20), legend_title_text="")
+navy, blue, gold = "#172B3F", "#8FB5CC", "#D8B65C"
+plot_layout = dict(
+    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(family="DM Sans", color="#475569"),
+    legend=dict(font=dict(color="#475569"), title=dict(font=dict(color="#172B3F"))),
+    xaxis=dict(color="#475569", tickfont=dict(color="#475569"), title_font=dict(color="#172B3F"), gridcolor="#E8E4DC", zerolinecolor="#D9D3C8"),
+    yaxis=dict(color="#475569", tickfont=dict(color="#475569"), title_font=dict(color="#172B3F"), gridcolor="#E8E4DC", zerolinecolor="#D9D3C8"),
+    hoverlabel=dict(bgcolor="#FFFFFF", bordercolor="#D8B65C", font=dict(color="#172B3F", family="DM Sans")),
+    margin=dict(l=18,r=18,t=25,b=20), legend_title_text="",
+)
 tabs = st.tabs(["Segmentation Overview", "Investor Behavior", "Geographic Analysis", "Segment Insights"])
 
 with tabs[0]:
@@ -93,11 +103,11 @@ with tabs[0]:
     a,b=st.columns([1,1.3])
     with a:
         fig=px.pie(counts,names="Segment",values="Buyers",hole=.68,color_discrete_sequence=[navy,blue,gold,"#c8b9a4","#7191a8"])
-        fig.update_layout(**plot_layout,showlegend=True); fig.update_traces(textposition="outside",textinfo="percent")
+        fig.update_layout(**plot_layout,showlegend=True); fig.update_traces(textposition="outside",textinfo="percent",textfont_color="#172B3F")
         st.plotly_chart(fig,use_container_width=True)
     with b:
         fig=px.bar(counts,x="Segment",y="Buyers",color="Segment",color_discrete_sequence=[navy,blue,gold,"#c8b9a4"],text="Buyers")
-        fig.update_layout(**plot_layout,showlegend=False,xaxis_title="",yaxis_title="Buyers"); fig.update_traces(textposition="outside",marker_line_width=0)
+        fig.update_layout(**plot_layout,showlegend=False,xaxis_title="",yaxis_title="Buyers"); fig.update_traces(textposition="outside",marker_line_width=0,textfont_color="#172B3F")
         st.plotly_chart(fig,use_container_width=True)
 
 with tabs[1]:
@@ -131,7 +141,8 @@ with tabs[2]:
     if geo.empty: st.info("No geographic fields are available in the filtered data.")
     else:
         fig=px.bar(geo.head(50),x="Buyers",y=geo_col,color="segment",orientation="h",barmode="stack",color_discrete_sequence=[navy,blue,gold,"#c8b9a4"])
-        fig.update_layout(**plot_layout,height=max(380,min(720,24*len(geo.head(25)))),yaxis={"categoryorder":"total ascending"},xaxis_title="Buyers",yaxis_title=""); st.plotly_chart(fig,use_container_width=True)
+        geo_layout={**plot_layout,"yaxis":{**plot_layout["yaxis"],"categoryorder":"total ascending"}}
+        fig.update_layout(**geo_layout,height=max(380,min(720,24*len(geo.head(25)))),xaxis_title="Buyers",yaxis_title=""); st.plotly_chart(fig,use_container_width=True)
 
 with tabs[3]:
     st.caption("Segment summaries use only measured fields. A segment label describes a model grouping, not a factual buyer identity.")
