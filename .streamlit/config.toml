@@ -1,21 +1,21 @@
 [theme]
-base = "light"
-primaryColor = "#172B3F"
-backgroundColor = "#FAF9F6"
-secondaryBackgroundColor = "#FFFFFF"
-textColor = "#172B3F"
-font = "DM Sans"
-headingFont = "Manrope"
-baseRadius = "large"
-buttonRadius = "large"
+base = "dark"
+primaryColor = "#0AE8B6"
+backgroundColor = "#06080D"
+secondaryBackgroundColor = "#0B0F17"
+textColor = "#F9FAFB"
+font = "Inter"
+headingFont = "Plus Jakarta Sans"
+baseRadius = "small"
+buttonRadius = "small"
 showWidgetBorder = true
-chartCategoricalColors = ["#172B3F", "#8FB5CC", "#D8B65C", "#475569", "#A88935"]
-dataframeHeaderBackgroundColor = "#F1EDE5"
-dataframeHeaderTextColor = "#172B3F"
-dataframeBorderColor = "#E2DBCF"
+chartCategoricalColors = ["#0AE8B6", "#06B6D4", "#818CF8", "#F59E0B", "#34D399", "#A78BFA", "#22D3EE", "#FB7185"]
+dataframeHeaderBackgroundColor = "#181C24"
+dataframeHeaderTextColor = "#F9FAFB"
+dataframeBorderColor = "#31353E"
 
 [theme.sidebar]
-backgroundColor = "#F1EDE5"
-secondaryBackgroundColor = "#FFFFFF"
-textColor = "#172B3F"
-primaryColor = "#172B3F"
+backgroundColor = "#0B0F17"
+secondaryBackgroundColor = "#111827"
+textColor = "#F9FAFB"
+primaryColor = "#0AE8B6"

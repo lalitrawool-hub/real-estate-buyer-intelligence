@@ -10,18 +10,22 @@ from src.profiling import summarize_segments
 st.set_page_config(page_title="Parcl | Buyer Intelligence", page_icon="◆", layout="wide")
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{--navy:#172B3F;--secondary:#475569;--blue:#8FB5CC;--blue-dark:#527f9f;--warm:#FAF9F6;--gold:#D8B65C;--beige:#F1EDE5;--ink:#172B3F;--muted:#475569;--card:#FFFFFF}
-.stApp,[data-testid="stAppViewContainer"]{background:var(--warm);color:var(--ink);font-family:'DM Sans',sans-serif}.block-container{padding:2.2rem 3.5rem 3rem;max-width:1580px}
-h1,h2,h3{font-family:'Manrope',sans-serif;color:var(--navy);letter-spacing:-.035em}.hero{padding:1rem 0 1.6rem}.eyebrow{color:#80651F;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700}.hero p{color:var(--secondary);font-size:1.02rem;margin:.35rem 0 0}
-[data-testid="stMetric"]{background:var(--card);border:1px solid #e7e2d8;border-radius:18px;padding:1rem 1.2rem;box-shadow:0 5px 18px rgba(23,43,63,.06)}[data-testid="stMetricLabel"],[data-testid="stMetricLabel"] *{color:var(--secondary)!important}[data-testid="stMetricValue"],[data-testid="stMetricValue"] *{color:var(--navy)!important;font-family:'Manrope',sans-serif}
-[data-testid="stSidebar"],[data-testid="stSidebar"] section{background:var(--beige)!important;color:var(--navy)!important;border-right:1px solid #e2dbcf}[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,[data-testid="stSidebar"] h3,[data-testid="stSidebar"] label,[data-testid="stSidebar"] p,[data-testid="stSidebar"] span,[data-testid="stSidebar"] [data-testid="stWidgetLabel"],[data-testid="stSidebar"] [data-testid="stMarkdownContainer"]{color:var(--navy)!important}
-[data-testid="stSidebar"] [data-baseweb="select"],[data-testid="stSidebar"] [data-baseweb="select"] *,[data-testid="stSidebar"] input{color:var(--navy)!important;-webkit-text-fill-color:var(--navy)!important}[data-testid="stSidebar"] [data-baseweb="select"]>div{background:#fff!important}
-[data-baseweb="popover"],[data-baseweb="menu"],[role="listbox"],[role="option"]{background:#fff!important;color:var(--navy)!important}[data-baseweb="popover"] *,[data-baseweb="menu"] *,[role="listbox"] *,[role="option"] *{color:var(--navy)!important}
-.stCaption,[data-testid="stCaptionContainer"],[data-testid="stCaptionContainer"] *{color:var(--secondary)!important}.stTabs [data-baseweb="tab-list"]{gap:1.2rem;border-bottom:1px solid #e8e4dc}.stTabs [data-baseweb="tab"],[data-baseweb="tab"] *{color:var(--secondary)!important;padding:0 0 .8rem}.stTabs [data-baseweb="tab"][aria-selected="true"],[data-baseweb="tab"][aria-selected="true"] *{color:var(--navy)!important}.stTabs [data-baseweb="tab-highlight"]{background-color:var(--gold)!important}
-div[data-testid="stPlotlyChart"]{background:var(--card);border:1px solid #e7e2d8;border-radius:18px;padding:.5rem;box-shadow:0 5px 18px rgba(23,43,63,.045)}
-@media (min-width:769px) and (max-width:1100px){.block-container{padding:2rem 2rem 2.5rem}}
-@media (max-width:768px){.block-container{padding:1.25rem 1rem 2rem}.hero{padding:.4rem 0 1rem}.hero h1{font-size:clamp(1.75rem,7vw,2.45rem);line-height:1.1}.hero p{font-size:.94rem}.stTabs [data-baseweb="tab-list"]{gap:.7rem;overflow-x:auto}.stTabs [data-baseweb="tab"]{font-size:.82rem;white-space:nowrap;padding:0 0 .65rem}[data-testid="stMetric"]{padding:.8rem;border-radius:14px}div[data-testid="stPlotlyChart"]{padding:.25rem;border-radius:14px}}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+:root{--canvas:#06080D;--rail:#0B0F17;--panel:#111827;--panel-raised:#181C24;--line:rgba(255,255,255,.085);--ink:#F9FAFB;--muted:#9CA3AF;--quiet:#6B7280;--mint:#0AE8B6;--cyan:#06B6D4;--violet:#818CF8;--amber:#F59E0B;--red:#F87171}
+.stApp,[data-testid="stAppViewContainer"]{background:var(--canvas)!important;color:var(--ink);font-family:'Inter',sans-serif}.block-container{padding:1.65rem 2.5rem 3rem;max-width:1728px}
+[data-testid="stHeader"]{background:rgba(6,8,13,.92);border-bottom:1px solid var(--line)}[data-testid="stToolbar"]{right:1rem}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);letter-spacing:-.035em}.hero{padding:.6rem 0 1.35rem;margin-bottom:1rem;border-bottom:1px solid var(--line)}.hero-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}.eyebrow{color:var(--mint);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;font-weight:700}.model-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.38rem .65rem;border:1px solid rgba(10,232,182,.24);border-radius:6px;background:rgba(10,232,182,.08);color:#C8FFF0;font-size:.72rem;font-weight:600;letter-spacing:.035em}.model-chip:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 10px rgba(10,232,182,.65)}.hero h1{font-size:clamp(1.8rem,3vw,2.35rem);line-height:1.16;margin:0}.hero p{color:var(--muted);font-size:.94rem;margin:.45rem 0 0;max-width:780px;line-height:1.6}
+[data-testid="stMetric"]{background:linear-gradient(145deg,rgba(17,24,39,.96),rgba(11,15,23,.92));border:1px solid var(--line);border-radius:10px;padding:1.05rem 1.15rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.045);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}[data-testid="stMetric"]:hover{transform:translateY(-2px);border-color:rgba(10,232,182,.38);box-shadow:0 8px 24px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.06)}[data-testid="stMetricLabel"],[data-testid="stMetricLabel"] *{color:var(--muted)!important;font-size:.76rem;letter-spacing:.025em}[data-testid="stMetricValue"],[data-testid="stMetricValue"] *{color:var(--ink)!important;font-family:'Inter',sans-serif;font-variant-numeric:tabular-nums;font-weight:600}
+[data-testid="stSidebar"],[data-testid="stSidebar"] section{background:var(--rail)!important;color:var(--ink)!important;border-right:1px solid var(--line)}[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3{color:var(--ink)!important;font-family:'Plus Jakarta Sans',sans-serif}[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1{font-size:1.25rem}[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,[data-testid="stSidebar"] [data-testid="stCaptionContainer"]{color:var(--muted)!important}[data-testid="stSidebar"] label,[data-testid="stSidebar"] [data-testid="stWidgetLabel"],[data-testid="stSidebar"] [data-testid="stWidgetLabel"] *{color:#D1D5DB!important;font-size:.78rem;font-weight:500}[data-testid="stSidebar"] hr{border-color:var(--line)}
+[data-testid="stSidebar"] [data-baseweb="select"],[data-testid="stSidebar"] [data-baseweb="select"] *,[data-testid="stSidebar"] input{color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important}[data-testid="stSidebar"] [data-baseweb="select"]>div,[data-testid="stSidebar"] input{background:var(--panel)!important;border-color:var(--line)!important;border-radius:6px!important}[data-testid="stSidebar"] [data-baseweb="tag"]{background:rgba(10,232,182,.12)!important;border:1px solid rgba(10,232,182,.25)!important;color:#C8FFF0!important}[data-testid="stSidebar"] [data-baseweb="tag"] *{color:#C8FFF0!important}
+[data-baseweb="popover"],[data-baseweb="menu"],[role="listbox"],[role="option"]{background:var(--panel-raised)!important;color:var(--ink)!important}[data-baseweb="popover"] *,[data-baseweb="menu"] *,[role="listbox"] *,[role="option"] *{color:var(--ink)!important}[data-baseweb="popover"] [aria-selected="true"],[role="option"][aria-selected="true"]{background:rgba(10,232,182,.12)!important}
+.stCaption,[data-testid="stCaptionContainer"],[data-testid="stCaptionContainer"] *{color:var(--muted)!important}.stTabs [data-baseweb="tab-list"]{gap:1.3rem;border-bottom:1px solid var(--line)}.stTabs [data-baseweb="tab"],[data-baseweb="tab"] *{color:var(--muted)!important;padding:0 0 .72rem;font-family:'Inter',sans-serif;font-size:.84rem;transition:color .16s ease}.stTabs [data-baseweb="tab"]:hover,[data-baseweb="tab"]:hover *{color:var(--ink)!important}.stTabs [data-baseweb="tab"][aria-selected="true"],[data-baseweb="tab"][aria-selected="true"] *{color:var(--mint)!important;font-weight:600}.stTabs [data-baseweb="tab-highlight"]{background-color:var(--mint)!important;height:2px}
+button[kind="primary"],.stDownloadButton button{border-radius:6px!important;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}.stDownloadButton button{background:rgba(10,232,182,.1)!important;border:1px solid rgba(10,232,182,.32)!important;color:#C8FFF0!important}.stDownloadButton button:hover{background:rgba(10,232,182,.17)!important;border-color:var(--mint)!important;box-shadow:0 0 16px rgba(10,232,182,.12);transform:translateY(-1px)}
+div[data-testid="stPlotlyChart"]{background:linear-gradient(145deg,rgba(17,24,39,.82),rgba(11,15,23,.72));border:1px solid var(--line);border-radius:10px;padding:.45rem;box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:border-color .18s ease,box-shadow .18s ease}div[data-testid="stPlotlyChart"]:hover{border-color:rgba(6,182,212,.32);box-shadow:0 8px 24px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.05)}
+[data-testid="stDataFrame"],[data-testid="stTable"]{border:1px solid var(--line);border-radius:9px;overflow:hidden}[data-testid="stAlert"]{border-radius:8px}
+@media (min-width:769px) and (max-width:1100px){.block-container{padding:1.5rem 1.6rem 2.5rem}}
+@media (max-width:768px){.block-container{padding:1rem .85rem 2rem}.hero{padding:.35rem 0 1rem}.hero-top{align-items:flex-start;flex-direction:column;gap:.55rem}.hero h1{font-size:clamp(1.65rem,7vw,2.2rem);line-height:1.12}.hero p{font-size:.88rem}.stTabs [data-baseweb="tab-list"]{gap:.8rem;overflow-x:auto}.stTabs [data-baseweb="tab"]{font-size:.78rem;white-space:nowrap;padding:0 0 .65rem}[data-testid="stMetric"]{padding:.8rem;border-radius:8px}div[data-testid="stPlotlyChart"]{padding:.2rem;border-radius:8px}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
 </style>
 """, unsafe_allow_html=True)
 
@@ -59,7 +63,7 @@ method_label = st.sidebar.selectbox("Clustering method", ["K-Means", "Hierarchic
 n_clusters = st.sidebar.slider("Number of segments", min_value=2, max_value=8, value=4)
 st.sidebar.caption("Features are standardized; identifiers and direct personal identifiers are excluded.")
 
-st.markdown('<div class="hero"><div class="eyebrow">PARCL · MARKET INTELLIGENCE</div><h1>Real Estate Buyer Intelligence</h1><p>Understand buyer behavior, discover meaningful segments, and explore where demand is taking shape.</p></div>', unsafe_allow_html=True)
+st.markdown(f'<div class="hero"><div class="hero-top"><div class="eyebrow">PARCL · BUYER INTELLIGENCE</div><div class="model-chip">ACTIVE RUN · {method_label.upper()} · {n_clusters} SEGMENTS</div></div><h1>Real Estate Buyer Intelligence</h1><p>Explore observed buyer patterns, compare segment behavior, and review geographic distribution from the available source data.</p></div>', unsafe_allow_html=True)
 if filtered.empty:
     st.warning("No buyers match these filters. Adjust or clear one or more selections in the sidebar.")
     st.stop()
@@ -79,14 +83,15 @@ except (ValueError, TypeError, FloatingPointError) as exc:
     st.error(f"Could not produce segments for the current data and settings: {exc}")
     st.stop()
 
-navy, blue, gold = "#172B3F", "#8FB5CC", "#D8B65C"
+navy, blue, gold = "#0AE8B6", "#06B6D4", "#F59E0B"
+segment_palette = [navy, blue, "#818CF8", gold, "#34D399", "#A78BFA", "#22D3EE", "#FB7185"]
 plot_layout = dict(
     paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(family="DM Sans", color="#475569"),
-    legend=dict(font=dict(color="#475569"), title=dict(font=dict(color="#172B3F"))),
-    xaxis=dict(color="#475569", tickfont=dict(color="#475569"), title_font=dict(color="#172B3F"), gridcolor="#E8E4DC", zerolinecolor="#D9D3C8"),
-    yaxis=dict(color="#475569", tickfont=dict(color="#475569"), title_font=dict(color="#172B3F"), gridcolor="#E8E4DC", zerolinecolor="#D9D3C8"),
-    hoverlabel=dict(bgcolor="#FFFFFF", bordercolor="#D8B65C", font=dict(color="#172B3F", family="DM Sans")),
+    font=dict(family="Inter", color="#9CA3AF"),
+    legend=dict(font=dict(color="#D1D5DB"), title=dict(font=dict(color="#F9FAFB"))),
+    xaxis=dict(color="#9CA3AF", tickfont=dict(color="#9CA3AF"), title_font=dict(color="#D1D5DB"), gridcolor="rgba(255,255,255,.07)", zerolinecolor="rgba(255,255,255,.12)"),
+    yaxis=dict(color="#9CA3AF", tickfont=dict(color="#9CA3AF"), title_font=dict(color="#D1D5DB"), gridcolor="rgba(255,255,255,.07)", zerolinecolor="rgba(255,255,255,.12)"),
+    hoverlabel=dict(bgcolor="#111827", bordercolor="#06B6D4", font=dict(color="#F9FAFB", family="Inter")),
     margin=dict(l=18,r=18,t=25,b=20), legend_title_text="",
 )
 tabs = st.tabs(["Segmentation Overview", "Investor Behavior", "Geographic Analysis", "Segment Insights"])
@@ -102,12 +107,12 @@ with tabs[0]:
     counts["Segment"]=counts["Segment"].map(lambda s:f"Segment {int(s)+1}")
     a,b=st.columns([1,1.3])
     with a:
-        fig=px.pie(counts,names="Segment",values="Buyers",hole=.68,color_discrete_sequence=[navy,blue,gold,"#c8b9a4","#7191a8"])
-        fig.update_layout(**plot_layout,showlegend=True); fig.update_traces(textposition="outside",textinfo="percent",textfont_color="#172B3F")
+        fig=px.pie(counts,names="Segment",values="Buyers",hole=.68,color_discrete_sequence=segment_palette)
+        fig.update_layout(**plot_layout,showlegend=True); fig.update_traces(textposition="outside",textinfo="percent",textfont_color="#F9FAFB")
         st.plotly_chart(fig,use_container_width=True)
     with b:
-        fig=px.bar(counts,x="Segment",y="Buyers",color="Segment",color_discrete_sequence=[navy,blue,gold,"#c8b9a4"],text="Buyers")
-        fig.update_layout(**plot_layout,showlegend=False,xaxis_title="",yaxis_title="Buyers"); fig.update_traces(textposition="outside",marker_line_width=0,textfont_color="#172B3F")
+        fig=px.bar(counts,x="Segment",y="Buyers",color="Segment",color_discrete_sequence=segment_palette,text="Buyers")
+        fig.update_layout(**plot_layout,showlegend=False,xaxis_title="",yaxis_title="Buyers"); fig.update_traces(textposition="outside",marker_line_width=0,textfont_color="#F9FAFB")
         st.plotly_chart(fig,use_container_width=True)
 
 with tabs[1]:
@@ -117,14 +122,14 @@ with tabs[1]:
         purpose=results.groupby(["segment","acquisition_purpose"],dropna=False).size().reset_index(name="Buyers")
         purpose["segment"]=purpose["segment"].map(lambda s:f"Segment {int(s)+1}")
         with c1:
-            fig=px.bar(purpose,x="segment",y="Buyers",color="acquisition_purpose",barmode="stack",color_discrete_sequence=[navy,blue,gold])
+            fig=px.bar(purpose,x="segment",y="Buyers",color="acquisition_purpose",barmode="stack",color_discrete_sequence=[navy,blue,gold,"#818CF8"])
             fig.update_layout(**plot_layout,xaxis_title="",yaxis_title="Buyers",legend_title="Purpose"); st.plotly_chart(fig,use_container_width=True)
     if "mean_sale_price" in results:
         price=results.groupby("segment",as_index=False)["mean_sale_price"].mean().dropna()
         price["segment"]=price["segment"].map(lambda s:f"Segment {int(s)+1}")
         with c2:
             if not price.empty:
-                fig=px.bar(price,x="segment",y="mean_sale_price",color="segment",color_discrete_sequence=[navy,blue,gold,"#c8b9a4"])
+                fig=px.bar(price,x="segment",y="mean_sale_price",color="segment",color_discrete_sequence=segment_palette)
                 fig.update_layout(**plot_layout,showlegend=False,xaxis_title="",yaxis_title="Mean recorded sale price ($)"); st.plotly_chart(fig,use_container_width=True)
             else: st.info("No recorded sale prices are available for these buyers.")
     if "loan_applied" in results:
@@ -140,7 +145,7 @@ with tabs[2]:
     geo["segment"]=geo["segment"].map(lambda s:f"Segment {int(s)+1}")
     if geo.empty: st.info("No geographic fields are available in the filtered data.")
     else:
-        fig=px.bar(geo.head(50),x="Buyers",y=geo_col,color="segment",orientation="h",barmode="stack",color_discrete_sequence=[navy,blue,gold,"#c8b9a4"])
+        fig=px.bar(geo.head(50),x="Buyers",y=geo_col,color="segment",orientation="h",barmode="stack",color_discrete_sequence=segment_palette)
         geo_layout={**plot_layout,"yaxis":{**plot_layout["yaxis"],"categoryorder":"total ascending"}}
         fig.update_layout(**geo_layout,height=max(380,min(720,24*len(geo.head(25)))),xaxis_title="Buyers",yaxis_title=""); st.plotly_chart(fig,use_container_width=True)
 
